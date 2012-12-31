@@ -8,7 +8,14 @@
     <link href="~/frontEnd/styles/style.css" rel="stylesheet" type="text/css" media="screen" />
     <script type="text/javascript" src="~/frontEnd/scripts/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="~/frontEnd/scripts/sc.js"></script>
+    <script type="text/javascript" src="~/frontEnd/scripts/jquery.js"></script>
     <script type="text/javascript" src="~/frontEnd/scripts/jquery.poptrox-1.0.js"></script>
+
+     <!--nivo slider for adding slider-->
+        <link rel="stylesheet" href="~/frontEnd/scripts/nivo-slider.css" type="text/css" media="screen" />
+
+<script src="~/frontEnd/scripts/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+
 </head>
 <body>
     
@@ -16,11 +23,11 @@
       <div id="header-wrapper">
           @RenderPage("~/frontEnd/shared/_header.cshtml")
       </div>
-      <div id="main_con" style="height:400px">
-          <div id="leftPanel" style="height:398px;width: 20.8%;border: 1px solid #BBBBBB;float: left;background-color: #DCDCDC;" >
+      <div id="main_con" style="height:590px">
+          <div id="leftPanel" style="height:540px;width: 20.8%;border: 1px solid #BBBBBB;float: left;" >
                 @RenderPage("~/frontEnd/shared/_leftPanel.cshtml")
           </div>
-          <div id="contents" style="float: right;width: 79%; height: 398px;background-color: #DCDCDC">
+          <div id="contents" style="float: right;width: 79%; height:500px;">
                 @RenderBody()
           </div>    
 
@@ -29,6 +36,15 @@
       <div id="footer">
           @RenderPage("~/frontEnd/shared/_footer.cshtml")
       </div>
+
+     <script type="text/javascript">
+     
+$(window).load(function() {
+    $('#slider').nivoSlider();
+ 
+});
+</script>
+
 
    </body>
 </html>
