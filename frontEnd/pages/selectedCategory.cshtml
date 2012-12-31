@@ -1,0 +1,47 @@
+﻿@{ 
+    var catId = UrlData[0];
+    
+    var db = Database.Open("edata");
+
+    var sql = "Select * from products where catId = @0";
+    var result = db.Query(sql, catId);
+    
+        
+} 
+
+<!--Displaying selected category products-->
+<div >
+    <div id="d1" style="float: left;margin-left:7px; border: 0px solid #BBBBBB;width: 45%" >
+        <h3 style="color:#000;margin-left: 2% ;font-family: 'Comic Sans MS'; font-weight: bold">Products</h3>
+
+     <!--View products-->
+       @foreach(var row in result){
+           string sub = (@row.prodPath).Substring(1,(@row.prodPath).Length-1 );
+           <div  style="border:1px solid #BBBBBB;height: 150px;width: 150px;float: left;margin-left: 7px;margin-top: 10px;"> 
+                <a href="@sub"><img src="@sub" alt="no img" height="120" width="100%"/></a>
+                <div style="padding-top: 4px;padding-left: 12px;font-family: Calibri;font-size: 18px">  
+                    <span><a href=@Href("~/frontEnd/pages/productDetails.cshtml", @row.prodId)>@row.prodName</a></span>
+                    <span style="margin-left: 10px;color: green;font-size: 16px"> @row.price </span>
+                </div>
+           </div>
+        }
+    </div>
+
+    <!--Displaying about the site-->
+    <div id="d2" style="float: right;border: 1px solid #BBBBBB;height: 100%;width: 53%">
+         <a href="~/frontEnd/pages/logout.cshtml" style="margin-left: 500px">Logout</a>
+             <div id="desc" style="border: 1px solid #BBBBBB;height: auto;width:auto;margin-top: 20px;margin-left: 10px;margin-right: 10px">
+                 <h3 style="color: green">Welcome to EaxyShopping</h3>
+                 
+                 <br/>
+                 
+                 <p> We are leading wholesale clothing, electronics and furniture market in Asia. We are professional to selling cheap  whole sale electronics, furniture and  chothes. We are the biggest cheap clothing online of online clothing stores.
+                 </p>
+                 <p style="color:#f00"> Gift packs are given to customers that is perfect for everyone.
+                 </p>
+                 <p>
+                 The No.1 destination for every thing. Quench your thirst by browsing through over 150 brands and 5000 styles for men, women and kids. From popular brands to high-street brands and high-end designer labels, bags and socks to match your shoes,furniture to vehicals, electronic, we have a huge repository </p>
+             </div>
+         <a href="~/frontEnd/pages/userPage.cshtml" style="margin-left: 310px;font-family: Calibri;font-size: 20px;color: black;">View your Shopping/profile</a>
+    </div >
+</div>
