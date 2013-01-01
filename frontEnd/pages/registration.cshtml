@@ -25,11 +25,13 @@
               if(ModelState.IsValid)
               {
                 WebSecurity.CreateUserAndAccount(username, password, null, false);
-
+               try{
                 var db = Database.Open("edata");
                 var insertquery = "Insert into userprofile(userName,emailAddress, dob , age , gender)" + "values (@0,@1,@2,@3,@4)";
                 db.Execute(insertquery, username, email, dob , age, gender);
-              }
+               }
+            catch{}
+}
 
           }
 }
