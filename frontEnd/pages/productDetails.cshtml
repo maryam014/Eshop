@@ -1,4 +1,5 @@
 ﻿@{
+try{
       int quantity = 1;
       var db = Database.Open("edata");
       var ProductId = UrlData[0];
@@ -14,6 +15,8 @@
       {
          quantity = Convert.ToInt32(Request["quan"]) ;
       }
+}
+catch{}
 }
 <!--Product Details page-->
 <div>
